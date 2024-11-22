@@ -3,21 +3,17 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Building and packaging multiple Lambda functions..."
-
-      # 为 index-photos Lambda 函数打包
-      - echo "Packaging index-photos function..."
+      - echo "Packaging index-photos..."
       - cd backend/index-photos
-      - zip -r ../../index-photos.zip . # 打包代码到根目录
+      - zip -r ../../index-photos.zip .
       - cd ../../
-
-      # 为 search-photos Lambda 函数打包
-      - echo "Packaging search-photos function..."
+      - echo "Packaging search-photos..."
       - cd backend/search-photos
-      - zip -r ../../search-photos.zip . # 打包代码到根目录
+      - zip -r ../../search-photos.zip .
       - cd ../../
 artifacts:
   files:
-    - index-photos.zip # index-photos 函数的 ZIP 包
-    - search-photos.zip # search-photos 函数的 ZIP 包
+    - index-photos.zip
+    - search-photos.zip
+  base-directory: . 
   discard-paths: yes
