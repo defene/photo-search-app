@@ -201,3 +201,5 @@ def lambda_handler(event, context):
             'headers': headers,  # 错误响应也添加 CORS 头
             'body': json.dumps('An error occurred.')
         }
+    
+####
