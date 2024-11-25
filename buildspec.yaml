@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.13 
+    commands:
+      - echo "Installing necessary packages"
+  build:
+    commands:
+      - echo "Packaging index-photos function"
+      - cd backend/index-photos
+      - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
+      - zip -r ../../index-photos.zip .
+      - cd ../../
+      - echo "Packaging search-photos function"
+      - cd backend/search-photos
+      - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
+      - zip -r ../../search-photos.zip .
+      - cd ../../
+artifacts:
+  files:
+    - index-photos.zip
+    - search-photos.zip
