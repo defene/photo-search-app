@@ -1,10 +1,19 @@
 version: 0.2
-
 phases:
+  install:
+    runtime-versions:
+      python: 3.13
+    commands:
+      - pip install --upgrade pip
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
   build:
     commands:
-      - echo "Building the Lambda deployment package"
-      - zip -r function.zip .
+      - echo Packaging Lambda function...
+      - zip -r ../../index-photos.zip .
 artifacts:
   files:
-    - function.zip
+    - index-photos.zip
+  discard-paths: yes
