@@ -13,6 +13,7 @@ phases:
     commands:
       - echo Packaging Lambda function...
       - zip -r ../../index-photos.zip .
+      - cd ../../
 artifacts:
   files:
     - index-photos.zip
