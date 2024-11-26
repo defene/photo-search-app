@@ -15,13 +15,19 @@ phases:
       - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       - zip -r ../../index-photos.zip .
       - cd ../../
+      - echo "Verifying index-photos.zip file..."
+      - if [ ! -f index-photos.zip ]; then echo "Error: index-photos.zip not found"; exit 1; fi
+      - unzip -l index-photos.zip  # 检查文件内容
       - echo "Deploying index-photos function"
-      - aws lambda update-function-code --function-name index-photos --zip-file fileb://index-photos.zip --publish
+      - aws lambda update-function-code --function-name index-photos --zip-file fileb://index-photos.zip --publish --region $AWS_REGION || exit 1
 
       - echo "Packaging search-photos function"
       - cd backend/search-photos
       - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       - zip -r ../../search-photos.zip .
       - cd ../../
+      - echo "Verifying search-photos.zip file..."
+      - if [ ! -f search-photos.zip ]; then echo "Error: search-photos.zip not found"; exit 1; fi
+      - unzip -l search-photos.zip  # 检查文件内容
       - echo "Deploying search-photos function"
-      - aws lambda update-function-code --function-name search-photos --zip-file fileb://search-photos.zip --publish
+      - aws lambda update-function-code --function-name search-photos --zip-file fileb://search-photos.zip --publish --region $AWS_REGION || exit 1
