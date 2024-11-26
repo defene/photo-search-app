@@ -3,9 +3,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.13 
+      python: 3.13
     commands:
       - echo "Installing necessary packages"
+
   build:
     commands:
       - echo "Packaging index-photos function"
@@ -13,12 +14,13 @@ phases:
       - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       - zip -r ../../index-photos.zip .
       - cd ../../
+      - echo "Deploying index-photos function"
+      - aws lambda update-function-code --function-name index-photos --zip-file fileb://index-photos.zip --publish
+
       - echo "Packaging search-photos function"
       - cd backend/search-photos
       - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
       - zip -r ../../search-photos.zip .
       - cd ../../
-artifacts:
-  files:
-    - index-photos.zip
-    - search-photos.zip
+      - echo "Deploying search-photos function"
+      - aws lambda update-function-code --function-name search-photos --zip-file fileb://search-photos.zip --publish
