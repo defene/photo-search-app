@@ -6,6 +6,7 @@ phases:
       python: 3.13
     commands:
       - echo "Installing necessary packages"
+      - export AWS_REGION=us-east-1
 
   build:
     commands:
