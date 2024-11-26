@@ -24,7 +24,7 @@ phases:
         fi
       - unzip -l index-photos.zip
       - echo "Deploying index-photos function"
-      - aws lambda update-function-code --function-name index-photos --zip-file fileb://index-photos.zip --publish --region $AWS_REGION
+      - aws lambda update-function-code --function-name LF1 --zip-file fileb://index-photos.zip --publish --region $AWS_REGION
 
       - echo "Packaging search-photos function"
       - cd backend/search-photos
@@ -42,4 +42,4 @@ phases:
         fi
       - unzip -l search-photos.zip
       - echo "Deploying search-photos function"
-      - aws lambda update-function-code --function-name search-photos --zip-file fileb://search-photos.zip --publish --region $AWS_REGION
+      - aws lambda update-function-code --function-name LF2 --zip-file fileb://search-photos.zip --publish --region $AWS_REGION
