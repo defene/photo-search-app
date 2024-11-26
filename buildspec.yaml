@@ -18,9 +18,6 @@ phases:
         fi
       - zip -r ../../index-photos.zip .
       - cd ../../
-      - echo "Verifying index-photos.zip file..."
-      - if [ ! -f index-photos.zip ]; then echo "Error: index-photos.zip not found"; exit 1; fi
-      - unzip -l index-photos.zip
       - echo "Deploying index-photos function"
       - aws lambda update-function-code --function-name index-photos --zip-file fileb://index-photos.zip --publish --region $AWS_REGION
 
@@ -32,8 +29,5 @@ phases:
         fi
       - zip -r ../../search-photos.zip .
       - cd ../../
-      - echo "Verifying search-photos.zip file..."
-      - if [ ! -f search-photos.zip ]; then echo "Error: search-photos.zip not found"; exit 1; fi
-      - unzip -l search-photos.zip
       - echo "Deploying search-photos function"
       - aws lambda update-function-code --function-name search-photos --zip-file fileb://search-photos.zip --publish --region $AWS_REGION
