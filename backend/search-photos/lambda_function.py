@@ -17,7 +17,7 @@ credentials = boto3.Session().get_credentials()
 # CORS headers
 CORS_HEADERS = {
    'Content-Type': 'application/json',
-   'Access-Control-Allow-Origin': 'http://assignment3-frontend.s3-website-us-east-1.amazonaws.com',
+   'Access-Control-Allow-Origin': '*',
    'Access-Control-Allow-Methods': 'GET,OPTIONS',
    'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
 }
