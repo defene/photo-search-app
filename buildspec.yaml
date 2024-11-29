@@ -13,7 +13,7 @@ phases:
       - echo "Checking files in backend/index-photos..."
       - ls -al
       - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
-      - zip -r ../../index-photos.zip app.py
+      - zip -r ../../index-photos.zip lambda_function.py
       - cd ../../
       - echo "Verifying index-photos.zip..."
       - |
@@ -31,7 +31,7 @@ phases:
       - echo "Checking files in backend/search-photos..."
       - ls -al
       - if [ -f requirements.txt ]; then pip install -r requirements.txt -t .; fi
-      - zip -r ../../search-photos.zip app.py
+      - zip -r ../../search-photos.zip lambda_function.py
       - cd ../../
       - echo "Verifying search-photos.zip..."
       - |
