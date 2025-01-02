@@ -25,12 +25,11 @@ def lambda_handler(event, context):
     headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Requested-With,x-amz-meta-customlabels',
-        'Access-Control-Allow-Methods': 'PUT,OPTIONS',  # 改为只允许这两个方法
+        'Access-Control-Allow-Methods': 'PUT,OPTIONS',  
         'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Expose-Headers': 'Content-Length,Content-Type'  # 指定具体的头
+        'Access-Control-Expose-Headers': 'Content-Length,Content-Type'  
     }
     
-    # 处理 OPTIONS 预检请求
     if event.get('httpMethod') == 'OPTIONS':
         return {
             'statusCode': 200,
@@ -97,7 +96,7 @@ def lambda_handler(event, context):
         
         return {
             'statusCode': 200,
-            'headers': headers,  # 添加 CORS 头
+            'headers': headers, 
             'body': json.dumps('Photo indexed successfully!')
         }
     
@@ -105,6 +104,6 @@ def lambda_handler(event, context):
         print(f"Error: {str(e)}")
         return {
             'statusCode': 500,
-            'headers': headers,  # 错误响应也添加 CORS 头
+            'headers': headers,  
             'body': json.dumps('An error occurred.')
         }
